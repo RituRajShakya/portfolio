@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Rituraj Shakya | Portfolio</title>
+
+  <style>
+    /* ---------- GENERAL STYLES ---------- */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #172044;
+      background: #ffffff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    section {
+      padding: 85px 8%;
+      scroll-margin-top: 80px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      color: #172044;
+    }
+
+    .section-title p {
+      color: #68708a;
+    }
+
+    /* ---------- NAVIGATION BAR ---------- */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      padding: 15px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #172044;
+    }
+
+    .logo span {
+      color: #5b50f5;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #5b50f5;
+    }
+
+    /* ---------- HERO SECTION ---------- */
+
+    .hero {
+      min-height: 550px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      align-items: center;
+      gap: 50px;
+      background: linear-gradient(135deg, #f5f6ff, #ffffff);
+    }
+
+    .hero-content small {
+      color: #5b50f5;
+      font-size: 0.9rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .hero-content h1 {
+      margin: 15px 0;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.15;
+      color: #172044;
+    }
+
+    .hero-content h1 span {
+      color: #5b50f5;
+    }
+
+    .hero-content p {
+      max-width: 560px;
+      color: #68708a;
+      margin-bottom: 25px;
+      font-size: 1.05rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      border: 2px solid #5b50f5;
+    }
+
+    .primary-btn {
+      color: white;
+      background: #5b50f5;
+    }
+
+    .primary-btn:hover {
+      background: #4238d8;
+      transform: translateY(-3px);
+    }
+
+    .secondary-btn {
+      color: #5b50f5;
+      background: transparent;
+    }
+
+    .secondary-btn:hover {
+      color: white;
+      background: #5b50f5;
+      transform: translateY(-3px);
+    }
+
+    /* ---------- PHOTO FRAME ---------- */
+
+    .photo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .photo-frame {
+      width: min(360px, 100%);
+      aspect-ratio: 1 / 1;
+      padding: 12px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 35% 65% 60% 40% / 40% 35% 65% 60%;
+      background: linear-gradient(135deg, #dcd9ff, #aaa4ff);
+      box-shadow: 0 20px 60px rgba(91, 80, 245, 0.22);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center top;
+      border: 7px solid white;
+      border-radius: 35% 65% 60% 40% / 40% 35% 65% 60%;
+    }
+
+    /* ---------- ABOUT SECTION ---------- */
+
+    .about {
+      background: #ffffff;
+    }
+
+    .about-content {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+      color: #68708a;
+      font-size: 1.05rem;
+    }
+
+    /* ---------- EDUCATION SECTION ---------- */
+
+    .education {
+      background: #f5f6ff;
+    }
+
+    .cards {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(23, 32, 68, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(23, 32, 68, 0.13);
+    }
+
+    .card h3 {
+      color: #5b50f5;
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: #68708a;
+      margin-bottom: 7px;
+    }
+
+    .card strong {
+      color: #172044;
+    }
+
+    /* ---------- SKILLS SECTION ---------- */
+
+    .skills {
+      background: #ffffff;
+      text-align: center;
+    }
+
+    .skills-list {
+      max-width: 850px;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .skill {
+      padding: 10px 20px;
+      border-radius: 25px;
+      background: #f0efff;
+      color: #4c43d9;
+      font-weight: bold;
+      font-size: 0.95rem;
+      transition: transform 0.3s ease;
+    }
+
+    .skill:hover {
+      transform: translateY(-4px);
+    }
+
+    /* ---------- PROJECTS SECTION ---------- */
+
+    .projects {
+      background: #f5f6ff;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card h3 {
+      color: #172044;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: #5b50f5;
+      font-weight: bold;
+    }
+
+    .project-link:hover {
+      color: #4238d8;
+    }
+
+    /* ---------- CONTACT SECTION ---------- */
+
+    .contact {
+      background: #ffffff;
+    }
+
+    .contact-box {
+      max-width: 950px;
+      margin: auto;
+      padding: 35px;
+      background: #f5f6ff;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(23, 32, 68, 0.08);
+      text-align: center;
+    }
+
+    .contact-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .contact-box > p {
+      color: #68708a;
+      margin-bottom: 25px;
+    }
+
+    .contact-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .contact-item span {
+      font-weight: bold;
+      color: #5b50f5;
+    }
+
+    .contact-item a,
+    .contact-item p {
+      color: #68708a;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-item a:hover {
+      color: #5b50f5;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      background: #172044;
+      color: white;
+      text-align: center;
+      padding: 30px 8%;
+    }
+
+    footer h3 {
+      margin-bottom: 8px;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      color: #d4d8ed;
+      margin: 5px 0;
+    }
+
+    footer a {
+      color: #aaa4ff;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    /* ---------- RESPONSIVE DESIGN ---------- */
+
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 15px 5%;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 65px;
+        padding-bottom: 65px;
+      }
+
+      .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .photo-container {
+        order: -1;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      section {
+        padding: 65px 5%;
+      }
+
+      .navbar {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 0.85rem;
+      }
+
+      .hero-content h1 {
+        font-size: 2.6rem;
+      }
+
+      .photo-frame {
+        width: min(290px, 100%);
+      }
+
+      .contact-details {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        padding: 25px 20px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ---------- NAVIGATION ---------- -->
+
+  <header>
+    <nav class="navbar">
+      <a href="#home" class="logo">
+        Rituraj <span>Shakya</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ---------- HERO SECTION ---------- -->
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <small>WELCOME TO MY PORTFOLIO</small>
+
+      <h1>
+        Hi, I'm<br />
+        <span>Rituraj Shakya</span>
+      </h1>
+
+      <p>
+        I am a technology enthusiast currently pursuing a five-year
+        integrated B.Tech and M.Tech course at DAVV IIPS, Indore.
+        I enjoy learning new technologies, developing creative projects,
+        and solving problems.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#projects" class="btn primary-btn">
+          View Projects →
+        </a>
+
+        <a href="#contact" class="btn secondary-btn">
+          Contact Me
+        </a>
+      </div>
+    </div>
+
+    <div class="photo-container">
+      <div class="photo-frame">
+        <img
+          src="formalphoto.jpg"
+          alt="Formal photograph of Rituraj Shakya"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- ABOUT SECTION ---------- -->
+
+  <section class="about" id="about">
+    <div class="section-title">
+      <h2>About Me</h2>
+      <p>A little introduction</p>
+    </div>
+
+    <div class="about-content">
+      <p>
+        Hello! I'm Rituraj Shakya. I am passionate about technology,
+        programming, and creative problem-solving. I enjoy exploring new
+        concepts, improving my technical skills, and working on meaningful
+        projects that help me grow as a developer.
+      </p>
+    </div>
+  </section>
+
+  <!-- ---------- EDUCATION SECTION ---------- -->
+
+  <section class="education" id="education">
+    <div class="section-title">
+      <h2>My Education</h2>
+      <p>My academic journey</p>
+    </div>
+
+    <div class="cards">
+
+      <article class="card">
+        <h3>Integrated B.Tech + M.Tech</h3>
+
+        <p>
+          <strong>DAVV – IIPS, Indore</strong>
+        </p>
+
+        <p>
+          Currently pursuing a five-year integrated B.Tech and M.Tech course.
+        </p>
+
+        <p>
+          Status: Currently pursuing
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Schooling</h3>
+
+        <p>
+          <strong>Kendriya Vidyalaya Sheopur</strong>
+        </p>
+
+        <p>
+          Completed my school education from Kendriya Vidyalaya Sheopur.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ---------- SKILLS SECTION ---------- -->
+
+  <section class="skills" id="skills">
+    <div class="section-title">
+      <h2>My Skills</h2>
+      <p>What I work with</p>
+    </div>
+
+    <div class="skills-list">
+      <span class="skill">C</span>
+      <span class="skill">C++</span>
+      <span class="skill">HTML</span>
+      <span class="skill">CSS</span>
+      <span class="skill">JavaScript</span>
+      <span class="skill">Communication</span>
+      <span class="skill">Problem Solving</span>
+    </div>
+  </section>
+
+  <!-- ---------- PROJECTS SECTION ---------- -->
+
+  <section class="projects" id="projects">
+    <div class="section-title">
+      <h2>My Projects</h2>
+      <p>Some of my recent work</p>
+    </div>
+
+    <div class="cards">
+
+      <article class="card project-card">
+        <div>
+          <h3>Portfolio Website</h3>
+
+          <p>
+            A responsive personal portfolio website created using HTML
+            and CSS to showcase my education, skills, projects, and
+            contact information.
+          </p>
+        </div>
+
+        <a href="#home" class="project-link">
+          View Project →
+        </a>
+      </article>
+
+      <article class="card project-card">
+        <div>
+          <h3>Project Two</h3>
+
+          <p>
+            Add a short description of your second project, including
+            the technologies used and its main features.
+          </p>
+        </div>
+
+        <a href="#" class="project-link">
+          View Project →
+        </a>
+      </article>
+
+      <article class="card project-card">
+        <div>
+          <h3>Project Three</h3>
+
+          <p>
+            Add details about another project, achievement, or creative
+            work that you want to showcase.
+          </p>
+        </div>
+
+        <a href="#" class="project-link">
+          View Project →
+        </a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ---------- CONTACT SECTION ---------- -->
+
+  <section class="contact" id="contact">
+    <div class="section-title">
+      <h2>Contact Me</h2>
+      <p>Let's connect</p>
+    </div>
+
+    <div class="contact-box">
+      <h3>Have a project in mind?</h3>
+
+      <p>
+        Feel free to contact me for collaborations, questions, or
+        opportunities.
+      </p>
+
+      <div class="contact-details">
+
+        <div class="contact-item">
+          <span>Email</span>
+          <a href="mailto:krishnashakya832@gmail.com">
+            krishnashakya832@gmail.com
+          </a>
+        </div>
+
+        <div class="contact-item">
+          <span>Phone</span>
+          <p>+91 8962351543</p>
+        </div>
+
+        <div class="contact-item">
+          <span>LinkedIn</span>
+          <a
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View LinkedIn Profile
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- FOOTER ---------- -->
+
+  <footer>
+    <h3>Rituraj Shakya</h3>
+
+    <p>
+      Email:
+      <a href="mailto:krishnashakya832@gmail.com">
+        krishnashakya832@gmail.com
+      </a>
+    </p>
+
+    <p>
+      © 2026 Rituraj Shakya. All rights reserved.
+    </p>
+  </footer>
+
+</body>
+</html>
